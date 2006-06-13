@@ -19,9 +19,9 @@
 #ifndef MARKLOGIC_TEST_AUTH_H
 #define MARKLOGIC_TEST_AUTH_H
 
-#define TEST_USER        "root"
-#define TEST_PASSWORD    "jethro"
+#define TEST_USER        "user"
+#define TEST_PASSWORD    "pass"
 #define TEST_HOST        "localhost"
-#define TEST_PORT        8003
+#define TEST_PORT        8002
 
 #endif /* test_auth.h */
