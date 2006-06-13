@@ -1,0 +1,12 @@
+===============================================================================
+README - xcc-python
+===============================================================================
+
+INSTALL
+
+* python setup.py build
+* python setup.py install
+
+AUTHOR
+
+Andrew Bruno <aeb@qnot.org>

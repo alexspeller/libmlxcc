@@ -1,0 +1,7 @@
+README
+ChangeLog
+COPYING
+setup.py
+test/test.py
+xcc/__init__.py
+xcc/xcc-python.c
