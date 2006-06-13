@@ -1,0 +1,61 @@
+===============================================================================
+Notes on Mark Logic Wire Protocol
+===============================================================================
+
+* Inserting Content
+
+It doesn't seem like XDBC uses the Content-Length header for uploading content.
+It also doesn't seem like it pays attention to the Content-Type header either.
+Both text and binary uploads have Content-Type: text/xml. 
+
+The total size in bytes of the content being uploaded is the first line of data
+in the body prefixed with a "1" or a "0". "0" seems to indicate that your
+chunking the data or maybe to support multiple file uploads. It seems like you
+need to post a certain number/string such as "10" which indicates the end of the
+content. A prefix of "1" seems to just go until the total number of bytes have
+been read. So the body looks like this:
+
+    HEADERS
+    newline
+    [1|0]total size in bytes
+    newline
+    Content data
+
+Path: /insert
+Params: 
+    uri = The uri for the content
+    locale = en_US (or whatever your locale is)
+    resolvesiz = seems hardcoded to 1048576? Not sure what this represents
+    format = [text|binary|xml]
+    nocommit = ? not sure what this is
+
+
+Example HTTP Request/Response using Java XDBC:
+
+  PUT /insert?uri=%2Ftest.xml&locale=en_US&resolvesiz=1048576 HTTP/1.1.
+  Content-Type: text/xml.
+  User-Agent: Java/1.5.0_02 MarkXDBC/2.2-8.
+  Host: localhost:8011.
+  Accept: text/html, text/xml, image/gif, image/jpeg, */*.
+  Connection: keep-alive.
+  Authorization: basic cjk917ll332cgfp=.
+  
+  072
+  
+  <root>
+  
+  <node/>
+  <node/>
+  <node/>
+  <node/>
+  <node/>
+  <node/>
+  <node/>
+  </root>
+  
+  10.
+  
+  HTTP/1.1 200 OK.
+  Content-Length: 0.
+  Connection: Keep-Alive.
+  Keep-Alive: timeout=1.

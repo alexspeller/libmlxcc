@@ -1,0 +1,5 @@
+./configure --without-ssl --without-zlib --disable-ipv6 --without-libidn --without-ca-bundle --disable-shared --enable-static --enable-thread --with-pic --enable-largefile
+
+make LDFLAGS="-all-static" CFLAGS="-D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE"
+
+strip -S libcurl.a

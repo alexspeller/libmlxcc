@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://purl.org/rss/1.0/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:syn="http://purl.org/rss/1.0/modules/syndication/" xmlns:admin="http://webns.net/mvcb/" xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0">
+  <channel rdf:about="http://slashdot.org/">
+    <title>Slashdot</title>
+    <link>http://slashdot.org/</link>
+    <description>News for nerds, stuff that matters</description>
+    <dc:language>en-us</dc:language>
+    <dc:rights>Copyright 1997-2005, OSTG - Open Source Technology Group, Inc.  All Rights Reserved.</dc:rights>
+    <dc:date>2005-10-16T09:41:54+00:00</dc:date>
+    <dc:publisher>OSTG</dc:publisher>
+    <dc:creator>pater@slashdot.org</dc:creator>
+    <dc:subject>Technology</dc:subject>
+    <syn:updatePeriod>hourly</syn:updatePeriod>
+    <syn:updateFrequency>1</syn:updateFrequency>
+    <syn:updateBase>1970-01-01T00:00+00:00</syn:updateBase>
+    <items>
+      <rdf:Seq>
+        <rdf:li rdf:resource="http://science.slashdot.org/article.pl?sid=05/10/16/0229239&amp;from=rss" />
+        <rdf:li rdf:resource="http://hardware.slashdot.org/article.pl?sid=05/10/15/1933254&amp;from=rss" />
+        <rdf:li rdf:resource="http://ask.slashdot.org/article.pl?sid=05/10/16/0152240&amp;from=rss" />
+        <rdf:li rdf:resource="http://hardware.slashdot.org/article.pl?sid=05/10/15/1911258&amp;from=rss" />
+        <rdf:li rdf:resource="http://science.slashdot.org/article.pl?sid=05/10/15/1858213&amp;from=rss" />
+        <rdf:li rdf:resource="http://slashdot.org/article.pl?sid=05/10/15/1836222&amp;from=rss" />
+        <rdf:li rdf:resource="http://science.slashdot.org/article.pl?sid=05/10/15/1823226&amp;from=rss" />
+        <rdf:li rdf:resource="http://developers.slashdot.org/article.pl?sid=05/10/15/1813247&amp;from=rss" />
+        <rdf:li rdf:resource="http://hardware.slashdot.org/article.pl?sid=05/10/15/1750211&amp;from=rss" />
+        <rdf:li rdf:resource="http://science.slashdot.org/article.pl?sid=05/10/15/1743259&amp;from=rss" />
+      </rdf:Seq>
+    </items>
+    <image rdf:resource="http://images.slashdot.org/topics/topicslashdot.gif" />
+    <textinput rdf:resource="http://slashdot.org/search.pl" />
+  </channel>
+  <image rdf:about="http://images.slashdot.org/topics/topicslashdot.gif">
+    <title>Slashdot</title>
+    <url>http://images.slashdot.org/topics/topicslashdot.gif</url>
+    <link>http://slashdot.org/</link>
+  </image>
+  <item rdf:about="http://science.slashdot.org/article.pl?sid=05/10/16/0229239&amp;from=rss">
+    <title>Cannabinoids Induce Brain Cell Growth?</title>
+    <link>http://rss.slashdot.org/Slashdot/slashdot?m=1217</link>
+    <description>Harlan writes "The Globe and Mail is reporting that researchers at the University of Saskatchewan are claiming that high doses of cannabinoids have induced new brain cell growth in the hippocampus, the part of the brain responsible for learning and memory, in rat subjects. There are some interesting potential implications in regards to high doses of cannabinoids found in substances like marijuana."&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=1217"/&gt;</description>
+    <dc:creator>ScuttleMonkey</dc:creator>
+    <dc:date>2005-10-16T08:33:00+00:00</dc:date>
+    <dc:subject>news</dc:subject>
+    <slash:department>lots-of-happy-people-made-happier</slash:department>
+    <slash:section>science</slash:section>
+    <slash:comments>51</slash:comments>
+    <slash:hit_parade>51,49,37,22,8,2,1</slash:hit_parade>
+    <feedburner:origLink>http://science.slashdot.org/article.pl?sid=05/10/16/0229239&amp;from=rss</feedburner:origLink>
+  </item>
+  <item rdf:about="http://hardware.slashdot.org/article.pl?sid=05/10/15/1933254&amp;from=rss">
+    <title>AMD / Intel Hybrid Motherboard</title>
+    <link>http://rss.slashdot.org/Slashdot/slashdot?m=1216</link>
+    <description>batgirl writes "ECS has taken advantage of their recent merger with PC Chips and released an interesting take on motherboards. Using the highly portable SiS chipsets, they were able to create a motherboard that supports all kinds of processors across all platforms. The PF88 starts as an Intel socket 775 motherboard, but different expansion cards can be purchased to add support for everything from a Socket 939 Athlon64 to a Socket 479 Pentium-M. The price is right, and performance is as good as can be expected. But how many people would make use of this?"&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=1216"/&gt;</description>
+    <dc:creator>ScuttleMonkey</dc:creator>
+    <dc:date>2005-10-16T06:28:00+00:00</dc:date>
+    <dc:subject>tech</dc:subject>
+    <slash:department>grand-unification-theory</slash:department>
+    <slash:section>hardware</slash:section>
+    <slash:comments>68</slash:comments>
+    <slash:hit_parade>68,65,54,32,11,5,1</slash:hit_parade>
+    <feedburner:origLink>http://hardware.slashdot.org/article.pl?sid=05/10/15/1933254&amp;from=rss</feedburner:origLink>
+  </item>
+  <item rdf:about="http://ask.slashdot.org/article.pl?sid=05/10/16/0152240&amp;from=rss">
+    <title>Your Favorite Math/Logic  Riddles?</title>
+    <link>http://rss.slashdot.org/Slashdot/slashdot?m=1215</link>
+    <description>shma asks: "Whether you're involved in the Sciences, Mathematics, or Engineering, you undoubtedly enjoy finding simple solutions to seemingly difficult problems. I'm sure you all have a favorite mind-bender, and who better to share it with than the Slashdot community? Post your own problems and try to solve others. Just one request: If you have figured out the solution, link to it in a post, rather than write it out where anyone can see it." What brain benders tickle your fancy?&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=1215"/&gt;</description>
+    <dc:creator>Cliff</dc:creator>
+    <dc:date>2005-10-16T04:35:00+00:00</dc:date>
+    <dc:subject>math</dc:subject>
+    <slash:department>top-10-mind-twisters</slash:department>
+    <slash:section>askslashdot</slash:section>
+    <slash:comments>748</slash:comments>
+    <slash:hit_parade>748,734,577,293,34,11,6</slash:hit_parade>
+    <feedburner:origLink>http://ask.slashdot.org/article.pl?sid=05/10/16/0152240&amp;from=rss</feedburner:origLink>
+  </item>
+  <item rdf:about="http://hardware.slashdot.org/article.pl?sid=05/10/15/1911258&amp;from=rss">
+    <title>Microchips for Dangerous Animals?</title>
+    <link>http://rss.slashdot.org/Slashdot/slashdot?m=1214</link>
+    <description>lucabrasi999 writes "CNN is reporting that Japan is moving towards requiring all owners of potentially dangerous animals (such as crocodiles and pythons) to have microchips installed in case the animal gets loose. Apparently there has been a wave of 'wild' animals that have been escaping their captivity. Did you know that it is actually possible to take your pet snake for a 'walk'?"&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=1214"/&gt;</description>
+    <dc:creator>ScuttleMonkey</dc:creator>
+    <dc:date>2005-10-16T02:29:00+00:00</dc:date>
+    <dc:subject>humor</dc:subject>
+    <slash:department>jobs-i-don't-want</slash:department>
+    <slash:section>hardware</slash:section>
+    <slash:comments>132</slash:comments>
+    <slash:hit_parade>132,126,98,59,14,4,1</slash:hit_parade>
+    <feedburner:origLink>http://hardware.slashdot.org/article.pl?sid=05/10/15/1911258&amp;from=rss</feedburner:origLink>
+  </item>
+  <item rdf:about="http://science.slashdot.org/article.pl?sid=05/10/15/1858213&amp;from=rss">
+    <title>Capitalizing on Melting Polar Ice</title>
+    <link>http://rss.slashdot.org/Slashdot/slashdot?m=1213</link>
+    <description>efuzzyone writes "As an affect of global warming, the polar ice caps seem to be slowly receding, what do you do? The NYT reports it is a gold rush, 'the Arctic is undergoing nothing less than a great rush for virgin territory and natural resources worth hundreds of billions of dollars.' Also, 'polar thaw is also starting to unlock other treasures: lucrative shipping routes, perhaps even the storied Northwest Passage; new cruise ship destinations; and important commercial fisheries.'"&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=1213"/&gt;</description>
+    <dc:creator>ScuttleMonkey</dc:creator>
+    <dc:date>2005-10-16T00:32:00+00:00</dc:date>
+    <dc:subject>editorial</dc:subject>
+    <slash:department>05ers-just-doesn't-have-the-same-ring</slash:department>
+    <slash:section>science</slash:section>
+    <slash:comments>365</slash:comments>
+    <slash:hit_parade>365,355,258,172,45,26,15</slash:hit_parade>
+    <feedburner:origLink>http://science.slashdot.org/article.pl?sid=05/10/15/1858213&amp;from=rss</feedburner:origLink>
+  </item>
+  <item rdf:about="http://slashdot.org/article.pl?sid=05/10/15/1836222&amp;from=rss">
+    <title>National Academies on U.S. Science</title>
+    <link>http://rss.slashdot.org/Slashdot/slashdot?m=1212</link>
+    <description>theodp writes to tell us that the National Academies, the nation's 'leading science advisory group', is warning of the continued loss of America's competitive edge with regards to science in the global community. In a press release they call for the immediate increase of teachers and advanced research and development, citing that 'in 2001 U.S. industry spent more on tort litigation than on research and development.' The Committee includes, among others, Intel's Craig 'Don't Call Us Benedict Arnold CEOs' Barrett.&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=1212"/&gt;</description>
+    <dc:creator>ScuttleMonkey</dc:creator>
+    <dc:date>2005-10-15T23:27:00+00:00</dc:date>
+    <dc:subject>usa</dc:subject>
+    <slash:department>holding-on-too-tight</slash:department>
+    <slash:section>mainpage</slash:section>
+    <slash:comments>219</slash:comments>
+    <slash:hit_parade>219,218,171,131,33,20,9</slash:hit_parade>
+    <feedburner:origLink>http://slashdot.org/article.pl?sid=05/10/15/1836222&amp;from=rss</feedburner:origLink>
+  </item>
+  <item rdf:about="http://science.slashdot.org/article.pl?sid=05/10/15/1823226&amp;from=rss">
+    <title>Toyota Develops New Plant Species</title>
+    <link>http://rss.slashdot.org/Slashdot/slashdot?m=1211</link>
+    <description>oznigot writes "Yes, that's Toyota, the car company. In what appears to be a publicity stunt to promote their hybrid vehicle technology Toyota has developed a new species of plant. Of the Cherry Sage shrub family, the new plant absorbs nitrogen oxide and other substances from the air better than the original Cherry Sage." Update: 10/16 00:01 GMT by Z : Original link removed.&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=1211"/&gt;</description>
+    <dc:creator>ScuttleMonkey</dc:creator>
+    <dc:date>2005-10-15T22:34:00+00:00</dc:date>
+    <dc:subject>tech</dc:subject>
+    <slash:department>green-not-just-a-paint-option</slash:department>
+    <slash:section>science</slash:section>
+    <slash:comments>207</slash:comments>
+    <slash:hit_parade>207,204,146,84,28,13,8</slash:hit_parade>
+    <feedburner:origLink>http://science.slashdot.org/article.pl?sid=05/10/15/1823226&amp;from=rss</feedburner:origLink>
+  </item>
+  <item rdf:about="http://developers.slashdot.org/article.pl?sid=05/10/15/1813247&amp;from=rss">
+    <title>Should RISC OS be Open Sourced?</title>
+    <link>http://rss.slashdot.org/Slashdot/slashdot?m=1210</link>
+    <description>An anonymous reader writes "Aficionados of RISC OS are in a dilemma. With RISC OS Ltd, one of the main developers of the OS, in financial trouble, should RISC OS be open sourced? Users and developers say yes, citing the current slow development of the platform in the hands of its owners. However, Paul Middleton, RISC OS Ltd MD, said, 'It is one thing to release software as open source so that people can look at the source code and help sort out the troublesome problems that "many hands can make light work of". It is completely another to simply say that the source should be freely available to anyone to do with as they like.' Paul also had reservations regarding 'the fragmentation seen in the open source world, such as the number of different Linux distributions and end user support nightmare entailed from that situation.'"&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=1210"/&gt;</description>
+    <dc:creator>ScuttleMonkey</dc:creator>
+    <dc:date>2005-10-15T21:24:00+00:00</dc:date>
+    <dc:subject>os</dc:subject>
+    <slash:department>silly-rabbit-risc-is-for-kids</slash:department>
+    <slash:section>developers</slash:section>
+    <slash:comments>185</slash:comments>
+    <slash:hit_parade>185,180,150,106,25,12,5</slash:hit_parade>
+    <feedburner:origLink>http://developers.slashdot.org/article.pl?sid=05/10/15/1813247&amp;from=rss</feedburner:origLink>
+  </item>
+  <item rdf:about="http://hardware.slashdot.org/article.pl?sid=05/10/15/1750211&amp;from=rss">
+    <title>HP Recalls 135,000 Laptop Batteries</title>
+    <link>http://rss.slashdot.org/Slashdot/slashdot?m=1209</link>
+    <description>caffeine_monkey writes "AP is reporting that Hewlett Packard is recalling 135,000 notebook batteries because they occasionally overheat and melt. Affected models are HP Pavilion, Compaq Presario, HP Compaq and Compaq Evo. More details are on the HP support site. From their FAQ: Is it safe to buy HP notebooks? Absolutely. HP fully stands behind the products it makes."&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=1209"/&gt;</description>
+    <dc:creator>ScuttleMonkey</dc:creator>
+    <dc:date>2005-10-15T20:31:00+00:00</dc:date>
+    <dc:subject>hp</dc:subject>
+    <slash:department>also-replacing-laps</slash:department>
+    <slash:section>hardware</slash:section>
+    <slash:comments>118</slash:comments>
+    <slash:hit_parade>118,112,84,53,20,10,4</slash:hit_parade>
+    <feedburner:origLink>http://hardware.slashdot.org/article.pl?sid=05/10/15/1750211&amp;from=rss</feedburner:origLink>
+  </item>
+  <item rdf:about="http://science.slashdot.org/article.pl?sid=05/10/15/1743259&amp;from=rss">
+    <title>Pillows Dangerous for Your Health</title>
+    <link>http://rss.slashdot.org/Slashdot/slashdot?m=1208</link>
+    <description>Roland Piquepaille writes "I guess we shouldn't be surprised by the fact that our pillows are miniature zoos containing millions of fungal spores, with some species able to cause diseases and even death. Researchers at the University of Manchester have studied the fungal contamination of our pillows for the first time in seventy years and discovered that these pillows were hot beds of fungal spores. After dissecting both feather and synthetic pillows in regular use between several months and 20 years, they've "identified several thousand spores of fungus per gram of used pillow -- more than a million spores per pillow."&lt;img src="http://rss.slashdot.org/Slashdot/slashdot?g=1208"/&gt;</description>
+    <dc:creator>ScuttleMonkey</dc:creator>
+    <dc:date>2005-10-15T19:28:00+00:00</dc:date>
+    <dc:subject>news</dc:subject>
+    <slash:department>not-my-cement-pillow</slash:department>
+    <slash:section>science</slash:section>
+    <slash:comments>380</slash:comments>
+    <slash:hit_parade>380,371,293,186,66,40,33</slash:hit_parade>
+    <feedburner:origLink>http://science.slashdot.org/article.pl?sid=05/10/15/1743259&amp;from=rss</feedburner:origLink>
+  </item>
+  <textinput rdf:about="http://slashdot.org/search.pl">
+    <title>Search Slashdot</title>
+    <description>Search Slashdot stories</description>
+    <name>query</name>
+    <link>http://slashdot.org/search.pl</link>
+  </textinput>
+</rdf:RDF>
+

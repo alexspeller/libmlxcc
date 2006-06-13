@@ -1,0 +1,40 @@
+%define name ruby-xcc
+%define version @VERSION@
+%define release 1
+
+Name:      %{name}
+Version:   %{version}
+Release:   %{release}
+Summary:   ruby-xcc - Ruby bindings for Mark Logic XML Content Connector
+License:   Apache Version 2.0
+Packager:  Andrew Bruno <aeb@qnot.org>
+Group:     Applications/System
+Source:    %{name}-%{version}.tar.gz
+URL:       https://code.qnot.org/svn/projects/marklogic/xcc-ruby/
+BuildRoot: /tmp/%{name}-%{version}-root
+Requires: ruby, mlxcc
+
+%description
+ruby-xcc - Ruby bindings Mark Logic XML Content Connector
+
+%prep
+rm -rf %{builddir}
+
+%setup
+
+%build
+ruby extconf.rb --with-mlxcc-dir=%{_prefix}
+make
+
+%install
+rm -rf $RPM_BUILD_ROOT
+make DESTDIR=$RPM_BUILD_ROOT install
+find $RPM_BUILD_ROOT -type f -print | \
+    ruby -pe 'sub(%r{^'$RPM_BUILD_ROOT'}, "")' > %{name}-%{version}-filelist
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+rm -rf %{builddir}
+
+%files -f %{name}-%{version}-filelist
+%defattr(-,root,root)

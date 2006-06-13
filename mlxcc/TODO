@@ -1,0 +1,10 @@
+===============================================================================
+mlxcc - TODO
+===============================================================================
+
+* Lots and Lots of testing
+
+* Add better large file support. The xcc_off_t type was added similiar to
+  libcurl. Need to figure out a better way. 
+
+* Add in missing features from XCC/J library

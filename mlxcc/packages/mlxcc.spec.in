@@ -1,0 +1,57 @@
+%define name mlxcc
+%define version @VERSION@
+%define release 1
+
+Name:      %{name}
+Version:   %{version}
+Release:   %{release}
+Summary:   mlxcc - Mark Logic XML Content Connector
+License:   Apache Version 2.0
+Packager:  Andrew Bruno <aeb@qnot.org>
+Group:     Applications/System
+Source:    %{name}-%{version}.tar.gz
+URL:       https://code.qnot.org/svn/projects/marklogic/mlxcc/
+BuildRoot: /tmp/%{name}-%{version}-root
+
+%description
+mlxcc - Mark Logic XML Content Connector
+
+mlxcc is a C API for communicating with Mark Logic. It provides an
+implementation of the underlying HTTP protocol used to communicate with the
+server and is based off of the Java XCC/J libraries provided by Mark Logic. The
+goal of mlxcc is to provide a base interface into Mark Logic in which bindings
+into other popular languages can be built.
+
+%prep
+rm -rf %{builddir}
+
+%setup
+
+%build
+%configure --prefix=%{_prefix}
+make CFLAGS="-D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE"
+cd docs; make docs; cd ..;
+
+%install
+rm -rf $RPM_BUILD_ROOT
+make DESTDIR=$RPM_BUILD_ROOT install-strip
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+rm -rf %{builddir}
+
+%post
+/sbin/ldconfig
+
+%postun
+/sbin/ldconfig
+
+
+%files
+%defattr(-,root,root)
+%attr(0644,root,root) %{_includedir}/marklogic/*.h
+%{_libdir}/libmlxcc.la
+%{_libdir}/libmlxcc.so*
+%{_libdir}/libmlxcc.a
+%doc README AUTHORS ChangeLog COPYING
+%doc docs/api/html/*

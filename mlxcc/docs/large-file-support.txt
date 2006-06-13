@@ -1,0 +1,32 @@
+http://kasperd.net/~kasperd/comp.os.linux.development.faq
+
+I needed to essentially treat an entire hard drive as one large file, and
+discovered I couldn't get past 2 GB into it until I defined the following
+macros in my source:
+
+#define _GNU_SOURCE
+#define _LARGEFILE_SOURCE  
+#define _LARGEFILE64_SOURCE  
+#define _FILE_OFFSET_BITS 64
+
+The _LARGEFILE_SOURCE macro permits the use of fseeko() and ftello(), among
+other things. _LARGEFILE64_SOURCE actually permits the use of 64-bit functions
+like fseeko64() and ftello64() and, finally, _FILE_OFFSET_BITS determines which
+interface will be used by default. If the macro isn't defined or is defined as
+32 then the default interface is 32 bits. If it is defined as 64 then the
+default interface is the 64-bit interface, and a call to fseeko() will use this
+64 bit interface.
+
+http://www.suse.de/~aj/linux_lfs.html
+See: Using LFS
+
+
+(in a discussion on "Opening Streams" and the  fopen() function). 
+
+There is a subtle gotchya in using the LFS support with some
+of the f* functions, especially fgetpos for example. Many people
+would use off_t (or even long int!) for storing the return values
+from fgetpos(). That would be a bug. You should explicitly define
+your variables for storing file positions as fpos_t (which is
+defined as off_t or off64_t as appropriate to your system and the
+#define settings in your sources. 

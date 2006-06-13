@@ -1,0 +1,55 @@
+{\rtf1\ansi\deff0\adeflang1025
+{\fonttbl{\f0\froman\fprq2\fcharset0 Nimbus Roman No9 L{\*\falt Times New Roman};}{\f1\froman\fprq2\fcharset0 Nimbus Roman No9 L{\*\falt Times New Roman};}{\f2\fmodern\fprq1\fcharset0 Bitstream Vera Sans Mono;}{\f3\fnil\fprq2\fcharset0 Bitstream Vera Sans;}{\f4\fnil\fprq2\fcharset0 Tahoma{\*\falt Lucidasans};}{\f5\fnil\fprq0\fcharset0 Tahoma{\*\falt Lucidasans};}}
+{\colortbl;\red0\green0\blue0;\red128\green128\blue128;}
+{\stylesheet{\s1\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af4\afs24\lang255\ltrch\dbch\af3\afs24\langfe255\loch\f0\fs24\lang1033\snext1 Default;}
+{\s2\sa120\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af4\afs24\lang255\ltrch\dbch\af3\afs24\langfe255\loch\f0\fs24\lang1033\sbasedon1\snext2 Text body;}
+{\s3\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af5\afs24\lang255\ltrch\dbch\af3\afs24\langfe255\loch\f0\fs24\lang1033\sbasedon2\snext3 List;}
+{\s4\sb120\sa120\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af5\afs20\lang255\ai\ltrch\dbch\af3\afs20\langfe255\ai\loch\f0\fs20\lang1033\i\sbasedon1\snext4 Caption;}
+{\s5\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af5\afs24\lang255\ltrch\dbch\af3\afs24\langfe255\loch\f0\fs24\lang1033\sbasedon1\snext5 Index;}
+{\s6\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af2\afs20\lang255\ltrch\dbch\af2\afs20\langfe255\loch\f2\fs20\lang1033\sbasedon1\snext6 Preformatted Text;}
+}
+{\info{\creatim\yr2006\mo4\dy22\hr19\min26}{\revtim\yr2006\mo4\dy22\hr19\min27}{\printim\yr1601\mo1\dy1\hr0\min0}{\comment StarWriter}{\vern6450}}\deftab709
+{\*\pgdsctbl
+{\pgdsc0\pgdscuse195\pgwsxn12240\pghsxn15840\marglsxn1800\margrsxn1800\margtsxn1440\margbsxn1440\pgdscnxt0 Default;}}
+\paperh15840\paperw12240\margl1800\margr1800\margt1440\margb1440\sectd\sbknone\pgwsxn12240\pghsxn15840\marglsxn1800\margrsxn1800\margtsxn1440\margbsxn1440\ftnbj\ftnstart1\ftnrstcont\ftnnar\aenddoc\aftnrstcont\aftnstart1\aftnnrlc
+\pard\plain \ltrpar\s6\cf0{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\rtlch\af2\afs20\lang255\ltrch\dbch\af2\afs20\langfe255\loch\f2\fs20\lang1033 {\loch\f2\fs20\lang1033\i0\b0 =======================================================================}
+\par {\loch\f2\fs20\lang1033\i0\b0 mlxcc - README}
+\par {\loch\f2\fs20\lang1033\i0\b0 =======================================================================}
+\par 
+\par {\loch\f2\fs20\lang1033\i0\b0 ** <WARNING> ** }
+\par {\loch\f2\fs20\lang1033\i0\b0 This software is still very experimental. This software has known problems and limitations that will be corrected before a stable release. There is absolutely no guarantee that this software will not corrupt your data, destroy your system, or start your mo
+therboard on fire. Use at your own risk.}
+\par {\loch\f2\fs20\lang1033\i0\b0 ** </WARNING> ** }
+\par 
+\par {\loch\f2\fs20\lang1033\i0\b0 ABOUT }
+\par 
+\par {\loch\f2\fs20\lang1033\i0\b0 mlxcc is a C API for communicating with Mark Logic. It provides an}
+\par {\loch\f2\fs20\lang1033\i0\b0 implementation of the underlying wire protocol used to communicate with the server and is based off of the Java XCC/J libraries provided by Mark Logic. The goal of mlxcc is to provide a base interface into Mark Logic in which bindings into other popular la
+nguages can be built.}
+\par 
+\par {\loch\f2\fs20\lang1033\i0\b0 mlxcc supports a few of the features of the Java XCC/J libraries including executing XQuery statements, bind variables, and inserting content.}
+\par 
+\par {\loch\f2\fs20\lang1033\i0\b0 INSTALL}
+\par 
+\par {\loch\f2\fs20\lang1033\i0\b0 mlxcc has been known to build on Linux (Fedora/Debian) and Mac OS X. It requires libcurl (http://curl.haxx.se) to compile. mlxcc runs against the Mark Logic Content Interaction Server v3.0 and later.}
+\par 
+\par {\loch\f2\fs20\lang1033\i0\b0 To build and install run (see INSTALL for further details):}
+\par {\loch\f2\fs20\lang1033\i0\b0     ./configure}
+\par {\loch\f2\fs20\lang1033\i0\b0     make }
+\par {\loch\f2\fs20\lang1033\i0\b0     make install}
+\par 
+\par {\loch\f2\fs20\lang1033\i0\b0 EXAMPLES}
+\par 
+\par {\loch\f2\fs20\lang1033\i0\b0 Example usage of the API can be found in the test/ directory. }
+\par 
+\par {\loch\f2\fs20\lang1033\i0\b0     * query.c - execute an XQuery statement with external variables}
+\par {\loch\f2\fs20\lang1033\i0\b0     * load.c - load content into Mark Logic}
+\par     
+\par {\loch\f2\fs20\lang1033\i0\b0 API Documentation can be found in the docs/api directory.}
+\par 
+\par {\loch\f2\fs20\lang1033\i0\b0 mlxcc is still very experimental and the API is subject to change. Any feedback, patches, testing would be greatly appreciated.}
+\par 
+\par {\loch\f2\fs20\lang1033\i0\b0 AUTHOR}
+\par 
+\par {\loch\f2\fs20\lang1033\i0\b0 mlxcc was written by Andrew Bruno <aeb@qnot.org>}
+\par }

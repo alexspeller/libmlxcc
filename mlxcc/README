@@ -1,0 +1,48 @@
+===============================================================================
+mlxcc - README
+===============================================================================
+
+** <WARNING> ** 
+This software is still very experimental. This software has known problems and
+limitations that will be corrected before a stable release. There is absolutely
+no guarantee that this software will not corrupt your data, destroy your
+system, or start your motherboard on fire. Use at your own risk.
+** </WARNING> ** 
+
+ABOUT 
+
+mlxcc is a C API for communicating with Mark Logic. It provides an
+implementation of the underlying wire protocol used to communicate with the
+server and is based off of the Java XCC/J libraries provided by Mark Logic. The
+goal of mlxcc is to provide a base interface into Mark Logic in which bindings
+into other popular languages can be built.
+
+A few of the features mlxcc supports include: executing XQuery statements, bind
+variables, and inserting content.
+
+INSTALL
+
+mlxcc has been known to build on Linux (Fedora/Debian) and Mac OS X. It requires
+libcurl (http://curl.haxx.se) to compile. mlxcc runs against the Mark Logic
+Content Interaction Server v3.0 and later.
+
+To build and install run (see INSTALL for further details):
+    ./configure
+    make 
+    make install
+
+EXAMPLES
+
+Example usage of the API can be found in the test/ directory. 
+
+    * query.c - execute an XQuery statement with external variables
+    * load.c - load content into Mark Logic
+    
+API Documentation can be found in the docs/api directory.
+
+mlxcc is still very experimental and the API is subject to change. Any feedback,
+patches, testing would be greatly appreciated.
+
+AUTHOR
+
+mlxcc was written by Andrew Bruno <aeb@qnot.org>

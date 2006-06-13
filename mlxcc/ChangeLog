@@ -1,0 +1,50 @@
+===============================================================================
+mlxcc - ChangeLog
+===============================================================================
+
+* 2006-05-21
+    * Fixed content upload bug when loading into 3.1.
+    * Refacted swig interface files
+
+* 2006-05-19
+    * Update libcurl.m4
+    * Added xcc_new_module_spawn, xcc_new_module_invoke
+    * New request options dbname, dbid, name, and timestamp
+    * Added helper functions xcc_query, xcc_invoke, xcc_spawn for easy access
+      to executing requests.
+    * Added mappings for new functions invoke, spawn in swig interface files      
+
+* 2006-04-18
+    * Fixed empty result bug. When a query returned an empty () result the
+      mlxcc would return a NULL result set but no error occured.
+    * Added support for EXECUTE permission
+
+* 2006-04-17
+    * Added thread test
+
+* 2006-04-11
+    * Back after a long period of not updating the ChangeLog. Lots of new
+      changes :)
+    * Changed name libxdbc to mlxcc (Mark Logic XML Content Connector)
+    * Updated API to reflect the new XCC/J libraries published by Mark Logic
+
+* 2005-10-24
+    * Modified xdbc_stmt_addvar() to overwrite previously declared variables
+      instead of just adding to the list.
+
+* 2005-10-21
+    * Added function xdbc_setvar_generic() To set non-strongly typed external
+      variables
+    * Fleshed out rest of XDBC_SCHEMA_TYPE string mappings 
+
+* 2005-10-20
+    * Changed error handling due to linking problems with XDBC_ERROR struct
+    * Added function xdbc_server_info() to return the server info string
+
+* 2005-10-18
+    * Added support for loading/querying binary documents.
+
+* 2005-10-17
+    * Finished up initial coding of version 0.0.1.
+    * Added support for executing XQuery statements, external variables, and document 
+      inserting.

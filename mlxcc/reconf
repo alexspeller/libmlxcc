@@ -1,0 +1,11 @@
+#!/bin/sh
+rm -f config.cache
+aclocal -I config
+echo "- aclocal."
+echo "- autoconf."
+autoconf
+echo "- autoheader."
+autoheader
+echo "- automake."
+automake -a
+exit
