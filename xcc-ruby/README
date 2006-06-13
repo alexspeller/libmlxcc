@@ -1,0 +1,35 @@
+===============================================================================
+README - xcc-ruby
+===============================================================================
+
+Run all Unit Tests:
+
+* rake alltests
+
+Build docs:
+
+* rake rdoc
+
+INSTALL
+
+Option 1.
+
+* Download ruby gem: https://code.qnot.org/svn/projects/marklogic/packages/GEMS/
+
+* gem install ruby-xcc
+
+Option 2. 
+
+* rake install
+
+Option 3. 
+
+* ruby extconf.rb --with-mlxcc-dir=/usr/local (libmlxcc path) 
+
+* make
+
+* make install
+
+AUTHOR
+
+Andrew Bruno <aeb@qnot.org>

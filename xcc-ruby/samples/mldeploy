@@ -1,0 +1,178 @@
+#!/usr/bin/ruby
+
+# This script is a fairly simple script that can be used to deploy an
+# application into a Modules database in a MarkLogic server.  The configuration
+# for this script is done with a hidden file (.ml-deploy) in your home
+# directory.  An example of what this configuration file looks like is below.
+# ----
+#  dev-host: dev.ml.mysite.com
+#  dev-modules-port: 8003
+#  dev-user: my-user
+#  dev-password: uber-secure
+#  dev-permissions: search:read, search:insert, search:update, search:execute
+#
+#  stage-host: stage.ml.mysite.com
+#  stage-modules-port: 8005
+#  stage-user: my-user
+#  stage-password: uber-secure
+#  stage-permissions: search:read, search:insert, search:update, search:execute
+#
+#  prod-host: prod.ml.mysite.com
+#  prod-modules-port: 8007
+#  prod-user: my-user
+#  prod-password: uber-secure
+#  prod-permissions: search:read, search:insert, search:update, search:execute
+# ----
+# This example configuration file is setup to be able to deploy to three
+# different servers, a development server, staging server and a production
+# server.  Any number of servers can be configured.  The permissions lines are
+# used to specify what permissions will be granted to the documents being
+# inserted.  The permissions are comma separated.  Each permission is in the
+# form of <role>:<capability>.
+# ----
+# The script has two required arguments and an optional third.  The first
+# argument is the server you would like to load to.  When using the above
+# configuration file this value would be one of "dev", "stage", or "prod" but
+# could be anything you like in your own configuration.
+#
+# The second argument is a path to a "document root".  The document root is a
+# path to the directory where your files to be deployed are stored. The script
+# will load all of the files in this directory and children directories into
+# the database.  The URI for each file is the fully qualified path to the file
+# with the document root removed.  An example of this is:
+# ----
+# I have the following files that I want to deploy to the server:
+#  /home/grimm/xquery/default.xqy
+#  /home/grimm/xquery/mypage.xqy
+#  /home/grimm/xquery/images/logo.png
+#  /home/grimm/xquery/lib/mylib.xqy
+#  /home/grimm/xquery/css/search.css
+# By running the command: <tt>mldeploy dev /home/grimm/xquery</tt> it will load
+# the files into the "dev" server with the following URI's:
+#  /default.xqy
+#  /mypage.xqy
+#  /images/logo.png
+#  /lib/mylib.xqy
+#  /css/search.css
+# ----
+# The third optional argument can be used if you only want to load one file
+# into the database: <tt>mldeploy dev /home/grimm/xquery
+# /home/grimm/xquery/default.xqy</tt> will only load the default.xqy file into
+# the database.
+
+#=============================================================================
+#
+# Copyright 2006 Ryan Grimm <grimm@xqdev.com> 
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may not
+# use this file except in compliance with the License. You may obtain a copy of
+# the License at 
+#
+#  http://www.apache.org/licenses/LICENSE-2.0 
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+# License for the specific language governing permissions and limitations under
+# the License.
+#
+#=============================================================================
+
+require 'find'
+require 'Xcc'
+
+def parse_config() #:nodoc:
+	conf = Hash.new()
+	conf_file = ENV['HOME'] + "/.ml-deploy"
+	conf_handle = File.open(conf_file)
+
+	conf_handle.readlines().each do |line|
+		if(line[0,1] == "#" or !line.match(/:/))
+			next
+		else
+			(key, val) = line.split(/:\s*/, 2)
+			conf[key] = val.chomp
+		end
+	end
+	return conf
+end
+
+def load_file(session, dir, file_path, permissions) #:nodoc:
+	if(!permissions)
+		permissions = ""
+	end
+
+	file = File.new(file_path)
+	re = /^#{dir}/
+	uri = file_path.sub(re, "")
+
+	content = session.new_content()
+	content.file_name = file_path
+	content.uri = uri
+	content.repair = Xcc::CORRECTION_NONE
+	content.format = Xcc::FORMAT_NONE
+
+	for perm in permissions.split(/,\s*/)
+		(role, capability) = perm.split(/:\s*/, 2)
+		if(capability.upcase == "READ")
+			content.add_permission(Xcc::READ, role)
+		end
+		if(capability.upcase == "INSERT")
+			content.add_permission(Xcc::INSERT, role)
+		end
+		if(capability.upcase == "UPDATE")
+			content.add_permission(Xcc::UPDATE, role)
+		end
+		if(capability.upcase == "EXECUTE")
+			content.add_permission(Xcc::EXECUTE, role)
+		end
+	end
+
+	begin
+		bytes = content.insert()
+		puts "Loaded: #{file_path} (#{bytes} bytes) to #{uri}"
+	rescue Xcc::XQueryError => e
+		puts "WARNING - Can't load: #{file_path}"
+	end
+end 
+
+
+if(ARGV.size() < 2)
+	puts "Usage: mldeploy <machine> <working dir> [specific file]"
+	exit
+end
+
+config = parse_config()
+
+machine = ARGV[0]
+
+user = config[machine + "-user"]
+passwd = config[machine + "-password"]
+host = config[machine + "-host"]
+port = config[machine + "-modules-port"].to_i
+
+session = Xcc::Session.new(user, passwd, host, "", port)
+
+dir = File.expand_path(ARGV[1])
+if(ARGV.size() == 3)
+	file_path = File.expand_path(ARGV[2])
+	if(FileTest.exists?(file_path))
+		load_file(session, dir, file_path, config[machine + "-permissions"])
+	else
+		puts "File not found: #{file_path}"
+	end
+else
+	Find.find(dir) do |path|
+		if(File.ftype(path) == "file")
+			loadit = true
+			path.split(/\//).each do |i|
+				if(i.slice(0, 1) == ".")
+					loadit = false
+				end
+			end
+			if(loadit)
+				load_file(session, dir, path, config[machine + "-permissions"])
+			end
+		end
+	end
+end

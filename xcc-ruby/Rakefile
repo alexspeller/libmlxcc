@@ -1,0 +1,112 @@
+require 'rubygems'
+require 'rake'
+require 'rake/clean'
+require 'rake/testtask'
+require 'rake/rdoctask'
+require 'rake/packagetask'
+require 'rake/gempackagetask'
+
+$:.unshift(File.dirname(__FILE__) + "/lib")
+require 'xcc/version'
+
+CLEAN.include '**/*.o'
+CLEAN.include '**/*.so'
+CLEAN.include 'docs'
+CLOBBER.include '**/*.log'
+CLOBBER.include '**/Makefile'
+CLOBBER.include '**/extconf.h'
+
+PKG_NAME      = 'ruby-xcc'
+PKG_VERSION   = Xcc::Version::to_s
+
+desc 'list available tasks'
+task :default do
+    puts "Run 'rake --tasks' for the list of available tasks"
+end
+
+desc 'Generate API documentation'
+Rake::RDocTask.new do |rdoc|
+  rdoc.rdoc_dir = 'doc'
+  rdoc.title    = "ruby-xcc"
+  rdoc.options << "--all"
+  rdoc.options << "-S"
+  rdoc.options << "-N"
+  rdoc.options << "--main=Xcc"
+  rdoc.rdoc_files.include("README", "TODO", "ChangeLog", "lib/*.rb", "lib/**/*.rb", "stubs/xcc-stub.rb", "samples/*")
+end
+
+task :test => :mintest
+
+desc "Run very minimal tests (doesn't require mark logic connection info)"
+Rake::TestTask.new(:mintest) do |t|
+    t.libs    << 'test'
+    t.libs    << 'lib'
+    t.pattern = 'test/tc_basic_test.rb'
+    t.verbose = true
+end
+
+desc 'Run all unit tests. ** Be sure to fill out mark logic connection info in test/xcc_test.rb'
+Rake::TestTask.new(:alltests) do |t|
+    t.libs    << 'test'
+    t.libs    << 'lib'
+    t.pattern = 'test/tc_*.rb'
+    t.verbose = true
+end
+
+desc 'Build xcc extension'
+task :build do
+    extconf_args = ''
+
+    unless ENV['MLXCC_DIR'].nil?
+        extconf_args = "--with-mlxcc-dir=#{ENV['MLXCC_DIR']}"
+    end
+
+    unless system("ruby extconf.rb #{extconf_args}")
+        STDERR.puts "Failed to configure xcc extension!"
+        break
+    end
+    unless system('make')
+        STDERR.puts 'Failed to build xcc extension!'
+        break
+    end
+end
+
+desc 'Install xcc extension'
+task :install => [:build] do
+    unless system('make install')
+        STDERR.puts 'Failed to install extension!'
+        break
+    end
+end
+
+
+spec = Gem::Specification.new do |s|
+  s.platform = Gem::Platform::RUBY
+
+  s.name = PKG_NAME
+  s.summary = "ruby-xcc is a module that allows ruby scripts to connect to Mark Logic"
+  s.description = %q{ruby-xcc is a module that allows ruby scripts to connect to Mark Logic}
+  s.version = PKG_VERSION
+  s.author = "Andrew Bruno"
+  s.email = "aeb@qnot.org"
+  s.homepage = "https://code.qnot.org/svn/projects/marklogic/xcc-ruby"
+
+  s.has_rdoc = true
+  s.extra_rdoc_files = [ "README" ]
+  s.rdoc_options = [ "--main", "README" ]
+  s.requirements << 'none'
+
+  s.require_path = 'lib'
+  s.autorequire = 'xcc/version'
+  s.extensions << 'extconf.rb'
+
+  s.files = [ "Rakefile", "TODO", "README", "ChangeLog", "COPYING", "extconf.rb", "xcc-ruby.c" ]
+  s.files = s.files + Dir.glob( "lib/**/*" ).delete_if { |item| item.include?( "\.svn" ) }
+  s.files = s.files + Dir.glob( "test/**/*" ).delete_if { |item| item.include?( "\.svn" ) }
+  s.files = s.files + Dir.glob( "stubs/**/*" ).delete_if { |item| item.include?( "\.svn" ) }
+end
+
+Rake::GemPackageTask.new(spec) do |p|
+    p.need_tar = true
+end
+

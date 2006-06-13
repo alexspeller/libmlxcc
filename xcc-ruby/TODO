@@ -1,0 +1,17 @@
+===============================================================================
+ruby-xcc - TODO
+===============================================================================
+
+* Make new methods on Content, Result, Item, Request classes private
+
+* Documentation
+**	Fill in missing gaps
+**	Review existing docs for correctness
+**	Write examples for the Document class
+
+* Implement the remaining methods in the Document class
+
+* Write the ErrorHelper class
+* Document the ErrorHelper class
+
+* Write unit tests
