@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- $Revision: 1.8 $ -->
+<section id="xcc.constants">
+ &reftitle.constants;
+ &extension.constants;
+ <para>
+  There are a number of constants that are avaliable to user of this extension.
+  The constants are grouped into three usages: formatting, permissions and
+  schema types.
+ </para>
+ <para>
+  The following constants are defined for setting the format of a document
+  being inserted.  These can all be passed in as the second argument to
+  <function>xcc_document_format</function>.
+ </para>
+ <table id="xcc.formatting-flags">
+  <title>XCC formatting constants</title>
+   <tgroup cols="2">
+    <thead>
+     <row>
+      <entry>Constant</entry>
+      <entry>Description</entry>
+     </row>
+    </thead>
+    <tbody>
+     <row>
+      <entry>XCC_CONTENT_FORMAT_XML</entry>
+      <entry>The document being loaded should be treated as XML.</entry>
+     </row>
+     <row>
+      <entry>XCC_CONTENT_FORMAT_TEXT</entry>
+      <entry>The document being loaded should be treated as text.</entry>
+     </row>
+     <row>
+      <entry>XCC_CONTENT_FORMAT_BINARY</entry>
+      <entry>The document being loaded should be treated as binary data.</entry>
+     </row>
+     <row>
+      <entry>XCC_CONTENT_FORMAT_NONE</entry>
+      <entry>This setting allows the server to decide what the type is itself.</entry>
+     </row>
+    </tbody>
+   </tgroup>
+ </table>
+ <para>
+  The following constents are used when granting a role in the database a
+  particular permission.  These are all passed in as the third argument to
+  <function>xcc_add_permission</function>.
+ </para>
+ <table id="xcc.permission-flags">
+  <title>XCC permission constants</title>
+   <tgroup cols="2">
+    <thead>
+     <row>
+      <entry>Constant</entry>
+      <entry>Description</entry>
+     </row>
+    </thead>
+    <tbody>
+     <row>
+      <entry>XCC_PERMISSION_READ</entry>
+      <entry>Sets the read permission on the document being loaded.</entry>
+     </row>
+     <row>
+      <entry>XCC_PERMISSION_INSERT</entry>
+      <entry>Sets the insert permission on the document being loaded.</entry>
+     </row>
+     <row>
+      <entry>XCC_PERMISSION_UPDATE</entry>
+      <entry>Sets the update permission on the document being loaded.</entry>
+     </row>
+     <row>
+      <entry>XCC_PERMISSION_EXECUTE</entry>
+      <entry>Sets the execute permission on the document being loaded.</entry>
+     </row>
+    </tbody>
+   </tgroup>
+ </table>
+ <para>
+  The schema type constants are used when setting a bind variable on a query.
+  These constants can all be passed in as the third argument to
+  <function>xcc_set_variable</function>.
+ </para>
+ <table id="xcc.schema-flags">
+  <title>XCC schema type constants</title>
+   <tgroup cols="2">
+    <thead>
+     <row>
+      <entry>Constant</entry>
+      <entry>Schema Type Set</entry>
+     </row>
+    </thead>
+    <tbody>
+     <row>
+      <entry>XCC_TYPE_ANYURI</entry>
+      <entry>xs:anyURI</entry>
+     </row>
+     <row>
+      <entry>XCC_TYPE_BASE64BINARY</entry>
+      <entry>xs:base64Binary</entry>
+     </row>
+     <row>
+      <entry>XCC_TYPE_BINARY</entry>
+      <entry>xs:binary</entry>
+     </row>
+     <row>
+      <entry>XCC_TYPE_BOOLEAN</entry>
+      <entry>xs:boolean</entry>
+     </row>
+     <row>
+      <entry>XCC_TYPE_DATE</entry>
+      <entry>xs:date</entry>
+     </row>
+     <row>
+      <entry>XCC_TYPE_DATETIME</entry>
+      <entry>xs:dateTime</entry>
+     </row>
+     <row>
+      <entry>XCC_TYPE_DAYTIMEDURATION</entry>
+      <entry>xs:dayTimeDuration</entry>
+     </row>
+     <row>
+      <entry>XCC_TYPE_DECIMAL</entry>
+      <entry>xs:decimal</entry>
+     </row>
+     <row>
+      <entry>XCC_TYPE_DOUBLE</entry>
+      <entry>xs:double</entry>
+     </row>
+     <row>
+      <entry>XCC_TYPE_DURATION</entry>
+      <entry>xs:duration</entry>
+     </row>
+     <row>
+      <entry>XCC_TYPE_FLOAT</entry>
+      <entry>xs:float</entry>
+     </row>
+     <row>
+      <entry>XCC_TYPE_GDAY</entry>
+      <entry>xs:gDay</entry>
+     </row>
+     <row>
+      <entry>XCC_TYPE_GMONTH</entry>
+      <entry>xs:gMonth</entry>
+     </row>
+     <row>
+      <entry>XCC_TYPE_GMONTHDAY</entry>
+      <entry>xs:gMonthDay</entry>
+     </row>
+     <row>
+      <entry>XCC_TYPE_GYEAR</entry>
+      <entry>xs:gYear</entry>
+     </row>
+     <row>
+      <entry>XCC_TYPE_GYEARMONTH</entry>
+      <entry>xs:gYearMonth</entry>
+     </row>
+     <row>
+      <entry>XCC_TYPE_HEXBINARY</entry>
+      <entry>xs:hexBinary</entry>
+     </row>
+     <row>
+      <entry>XCC_TYPE_INTEGER</entry>
+      <entry>xs:integer</entry>
+     </row>
+     <row>
+      <entry>XCC_TYPE_NODE</entry>
+      <entry>node()</entry>
+     </row>
+     <row>
+      <entry>XCC_TYPE_QNAME</entry>
+      <entry>xs:QName</entry>
+     </row>
+     <row>
+      <entry>XCC_TYPE_STRING</entry>
+      <entry>xs:string</entry>
+     </row>
+     <row>
+      <entry>XCC_TYPE_TEXT</entry>
+      <entry>text()</entry>
+     </row>
+     <row>
+      <entry>XCC_TYPE_TIME</entry>
+      <entry>xs:time</entry>
+     </row>
+     <row>
+      <entry>XCC_TYPE_YEARMONTHDURATION</entry>
+      <entry>xs:yearMonthDuration</entry>
+     </row>
+     <row>
+      <entry>XCC_TYPE_UNKNOWN</entry>
+      <entry>N/A</entry>
+     </row>
+    </tbody>
+   </tgroup>
+ </table>
+</section>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

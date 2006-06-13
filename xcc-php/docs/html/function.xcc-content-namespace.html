@@ -1,0 +1,327 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>xcc_content_namespace</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="PHP Manual"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="XCC Functions"
+HREF="ref.xcc.html"><LINK
+REL="PREVIOUS"
+TITLE="xcc_content_from_string"
+HREF="function.xcc-content-from-string.html"><LINK
+REL="NEXT"
+TITLE="xcc_content_quality"
+HREF="function.xcc-content-quality.html"><META
+HTTP-EQUIV="Content-type"
+CONTENT="text/html; charset=UTF-8"></HEAD
+><BODY
+CLASS="refentry"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>PHP Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="function.xcc-content-from-string.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="function.xcc-content-quality.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="function.xcc-content-namespace"
+></A
+>xcc_content_namespace</H1
+><DIV
+CLASS="refnamediv"
+><A
+NAME="AEN187629"
+></A
+><P
+>    (no version information, might be only in CVS)</P
+>xcc_content_namespace&nbsp;--&nbsp;Sets the namespace of the document being inserted</DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN187632"
+></A
+><H2
+>Description</H2
+>resource <B
+CLASS="methodname"
+>xcc_content_namespace</B
+> ( resource document, integer namespace )<BR
+></BR
+><P
+>&#13;   Sets the default xml namespace of the document being inserted if one does not
+   exist on the document.
+  </P
+></DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN187644"
+></A
+><H2
+>Parameters</H2
+><P
+>&#13;   <P
+></P
+><DIV
+CLASS="variablelist"
+><DL
+><DT
+><VAR
+CLASS="parameter"
+>document</VAR
+></DT
+><DD
+><P
+>&#13;       The resource returned from <A
+HREF="function.xcc-content-from-file.html"
+><B
+CLASS="function"
+>xcc_content_from_file()</B
+></A
+>
+       or <A
+HREF="function.xcc-content-from-string.html"
+><B
+CLASS="function"
+>xcc_content_from_string()</B
+></A
+>.
+      </P
+></DD
+><DT
+><VAR
+CLASS="parameter"
+>namespace</VAR
+></DT
+><DD
+><P
+>&#13;       The default xml namespace to be set on the document if one is not
+       defined on the document.
+      </P
+></DD
+></DL
+></DIV
+>
+  </P
+></DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN187660"
+></A
+><H2
+>Return Values</H2
+><P
+>&#13;   Returns <TT
+CLASS="constant"
+><B
+>TRUE</B
+></TT
+> on success or <TT
+CLASS="constant"
+><B
+>FALSE</B
+></TT
+> on failure. 
+  </P
+></DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN187665"
+></A
+><H2
+>Examples</H2
+><P
+>&#13;   <TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="example"
+><A
+NAME="AEN187668"
+></A
+><P
+><B
+>Example 1. <B
+CLASS="function"
+>xcc_content_namespace()</B
+> example</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+CELLPADDING="5"
+><TR
+><TD
+><code><font color="#000000">
+<font color="#0000BB">&lt;?php<br /></font><font color="#FF8000">//&nbsp;create&nbsp;a&nbsp;new&nbsp;document&nbsp;insert&nbsp;handle&nbsp;for&nbsp;the&nbsp;file<br /></font><font color="#0000BB">$doc&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000BB">xcc_content_from_file</font><font color="#007700">(</font><font color="#0000BB">$file</font><font color="#007700">,&nbsp;</font><font color="#0000BB">$uri</font><font color="#007700">)&nbsp;or&nbsp;die(</font><font color="#DD0000">"Failed&nbsp;to&nbsp;created&nbsp;insert&nbsp;handle:&nbsp;"&nbsp;</font><font color="#007700">.&nbsp;</font><font color="#0000BB">xcc_error</font><font color="#007700">());<br /><br /></font><font color="#FF8000">//&nbsp;set&nbsp;the&nbsp;namespace&nbsp;of&nbsp;the&nbsp;document<br /></font><font color="#0000BB">xcc_content_namespace</font><font color="#007700">(</font><font color="#0000BB">$doc</font><font color="#007700">,&nbsp;</font><font color="#DD0000">"http://www.w3.org/1999/xhtml"</font><font color="#007700">);<br /><br /></font><font color="#FF8000">//&nbsp;inserts&nbsp;the&nbsp;document,&nbsp;returns&nbsp;the&nbsp;number&nbsp;of&nbsp;bytes&nbsp;inserted<br /></font><font color="#0000BB">$bytes&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000BB">xcc_insert_content</font><font color="#007700">(</font><font color="#0000BB">$doc</font><font color="#007700">)&nbsp;or&nbsp;die(</font><font color="#DD0000">"Failed&nbsp;to&nbsp;insert&nbsp;document:&nbsp;"&nbsp;</font><font color="#007700">.&nbsp;</font><font color="#0000BB">xcc_error</font><font color="#007700">());<br /><br /></font><font color="#0000BB">xcc_close</font><font color="#007700">();<br /></font><font color="#0000BB">?&gt;</font>
+</font>
+</code></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+>
+  </P
+></DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN187672"
+></A
+><H2
+>See Also</H2
+><P
+>&#13;   <P
+></P
+><TABLE
+BORDER="0"
+><TBODY
+><TR
+><TD
+><A
+HREF="function.xcc-content-from-file.html"
+><B
+CLASS="function"
+>xcc_content_from_file()</B
+></A
+></TD
+></TR
+><TR
+><TD
+><A
+HREF="function.xcc-content-from-string.html"
+><B
+CLASS="function"
+>xcc_content_from_string()</B
+></A
+></TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+>
+  </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="function.xcc-content-from-string.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="function.xcc-content-quality.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>xcc_content_from_string</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ref.xcc.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>xcc_content_quality</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

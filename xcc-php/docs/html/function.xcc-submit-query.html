@@ -1,0 +1,332 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>xcc_submit_query</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="PHP Manual"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="XCC Functions"
+HREF="ref.xcc.html"><LINK
+REL="PREVIOUS"
+TITLE="xcc_set_variable"
+HREF="function.xcc-set-variable.html"><LINK
+REL="NEXT"
+TITLE="xcc_submit_request"
+HREF="function.xcc-submit-request.html"><META
+HTTP-EQUIV="Content-type"
+CONTENT="text/html; charset=UTF-8"></HEAD
+><BODY
+CLASS="refentry"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>PHP Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="function.xcc-set-variable.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="function.xcc-submit-request.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="function.xcc-submit-query"
+></A
+>xcc_submit_query</H1
+><DIV
+CLASS="refnamediv"
+><A
+NAME="AEN188252"
+></A
+><P
+>    (no version information, might be only in CVS)</P
+>xcc_submit_query&nbsp;--&nbsp;Executes a query</DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN188255"
+></A
+><H2
+>Description</H2
+>resource <B
+CLASS="methodname"
+>xcc_submit_query</B
+> ( string query [, resource link] )<BR
+></BR
+><P
+>&#13;   Executes a query an returns the result set.  This function differs from
+   <A
+HREF="function.xcc-new-adhoc-query.html"
+><B
+CLASS="function"
+>xcc_new_adhoc_query()</B
+></A
+> in that it does not allow you
+   set any bind variables.  For queries that don't require bind variables this
+   function is handy because it saves you a call to
+   <B
+CLASS="function"
+>xcc_submit_query()</B
+>.
+  </P
+></DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN188269"
+></A
+><H2
+>Parameters</H2
+><P
+>&#13;   <P
+></P
+><DIV
+CLASS="variablelist"
+><DL
+><DT
+><VAR
+CLASS="parameter"
+>query</VAR
+></DT
+><DD
+><P
+>&#13;       The query to be executed.
+      </P
+><DIV
+CLASS="note"
+><BLOCKQUOTE
+CLASS="note"
+><P
+><B
+>Note: </B
+>
+        This query can not take in bind variables.
+       </P
+></BLOCKQUOTE
+></DIV
+></DD
+><DT
+><VAR
+CLASS="parameter"
+>&#13;link</VAR
+></DT
+><DD
+><P
+>The connection to the Mark Logic server.
+If the link identifier is not specified, the last link opened by
+<B
+CLASS="function"
+>xcc_connect()</B
+> is assumed. If no such link is found, an
+<TT
+CLASS="constant"
+><B
+>E_WARNING</B
+></TT
+> level warning is generated.</P
+></DD
+></DL
+></DIV
+>
+  </P
+></DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN188287"
+></A
+><H2
+>Return Values</H2
+><P
+>&#13;   Returns a result resource on success, or <TT
+CLASS="constant"
+><B
+>FALSE</B
+></TT
+> on failure.
+  </P
+></DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN188291"
+></A
+><H2
+>Examples</H2
+><P
+>&#13;   <TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="example"
+><A
+NAME="AEN188294"
+></A
+><P
+><B
+>Example 1. <B
+CLASS="function"
+>xcc_submit_query()</B
+> example</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+CELLPADDING="5"
+><TR
+><TD
+><code><font color="#000000">
+<font color="#0000BB">&lt;?php<br /></font><font color="#FF8000">//&nbsp;Connect&nbsp;to&nbsp;the&nbsp;database<br /></font><font color="#0000BB">xcc_new_session</font><font color="#007700">(</font><font color="#0000BB">$user</font><font color="#007700">,&nbsp;</font><font color="#0000BB">$password</font><font color="#007700">,&nbsp;</font><font color="#0000BB">$host</font><font color="#007700">,&nbsp;</font><font color="#0000BB">$database</font><font color="#007700">,&nbsp;</font><font color="#0000BB">$port</font><font color="#007700">)&nbsp;or&nbsp;die(</font><font color="#DD0000">"Counld&nbsp;not&nbsp;connect&nbsp;to&nbsp;server:&nbsp;"&nbsp;</font><font color="#007700">.&nbsp;</font><font color="#0000BB">xcc_error</font><font color="#007700">());<br /><br /></font><font color="#FF8000">//&nbsp;Find&nbsp;all&nbsp;of&nbsp;the&nbsp;titles&nbsp;in&nbsp;articles&nbsp;and&nbsp;get&nbsp;them&nbsp;out&nbsp;as&nbsp;strings<br /></font><font color="#0000BB">$results&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000BB">xcc_submit_query</font><font color="#007700">(</font><font color="#DD0000">'for&nbsp;$i&nbsp;in&nbsp;/article//title&nbsp;return&nbsp;string($i)'</font><font color="#007700">)&nbsp;or&nbsp;die(</font><font color="#DD0000">"Can't&nbsp;execute&nbsp;query:&nbsp;"&nbsp;</font><font color="#007700">.&nbsp;</font><font color="#0000BB">xcc_error</font><font color="#007700">());<br /><br /></font><font color="#FF8000">//&nbsp;Itterate&nbsp;over&nbsp;the&nbsp;the&nbsp;items&nbsp;and&nbsp;print&nbsp;out&nbsp;the&nbsp;'data'&nbsp;from&nbsp;each<br /></font><font color="#007700">while(</font><font color="#0000BB">$item&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000BB">xcc_fetch_next</font><font color="#007700">(</font><font color="#0000BB">$results</font><font color="#007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</font><font color="#0000BB">$item</font><font color="#007700">[</font><font color="#DD0000">'data'</font><font color="#007700">],&nbsp;</font><font color="#DD0000">"&lt;br/&gt;"</font><font color="#007700">;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#FF8000">//&nbsp;you&nbsp;can&nbsp;get&nbsp;the&nbsp;XML&nbsp;Schema&nbsp;type&nbsp;out&nbsp;with&nbsp;the&nbsp;'type'&nbsp;key<br /></font><font color="#007700">}<br /></font><font color="#0000BB">?&gt;</font>
+</font>
+</code></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+>
+  </P
+></DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN188298"
+></A
+><H2
+>See Also</H2
+><P
+>&#13;   <P
+></P
+><TABLE
+BORDER="0"
+><TBODY
+><TR
+><TD
+><A
+HREF="function.xcc-new-adhoc-query.html"
+><B
+CLASS="function"
+>xcc_new_adhoc_query()</B
+></A
+></TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+>
+  </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="function.xcc-set-variable.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="function.xcc-submit-request.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>xcc_set_variable</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ref.xcc.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>xcc_submit_request</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

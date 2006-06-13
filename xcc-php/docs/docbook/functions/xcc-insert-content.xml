@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- $Revision: 0.1 $ -->
+<refentry id="function.xcc-insert-content">
+ <refnamediv>
+  <refname>xcc_insert_content</refname>
+  <refpurpose>Execute loading a document into the database.</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>bool</type><methodname>xcc_insert_content</methodname>
+   <methodparam><type>resource</type><parameter>document</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   Executes loading the <parameter>document</parameter> into the database.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>document</parameter></term>
+     <listitem>
+      <para>
+       The document resource that was returned from
+       <function>xcc_content_from_file</function> or
+       <function>xcc_content_from_string</function>.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   Returns the number of bytes inserted.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>xcc_insert_content</function> example</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+xcc_new_session($user, $password, $host, $database, $port) or die("Counld not connect to server: " . xcc_error());
+
+// create a new document insert handle for the file
+$doc = xcc_content_from_file($file, $uri) or die("Failed to created insert handle: " . xcc_error());
+
+// inserts the document, returns the number of bytes inserted
+$bytes = xcc_insert_content($doc) or die("Failed to insert document: " . xcc_error());
+
+echo "Inserted $bytes bytes from file<br/>";
+
+xcc_close();
+?>
+]]>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>xcc_content_from_file</function></member>
+    <member><function>xcc_content_from_string</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

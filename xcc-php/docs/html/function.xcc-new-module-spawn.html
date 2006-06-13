@@ -1,0 +1,321 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>xcc_new_module_spawn</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="PHP Manual"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="XCC Functions"
+HREF="ref.xcc.html"><LINK
+REL="PREVIOUS"
+TITLE="xcc_new_module_invoke"
+HREF="function.xcc-new-module-invoke.html"><LINK
+REL="NEXT"
+TITLE="xcc_new_session"
+HREF="function.xcc-new-session.html"><META
+HTTP-EQUIV="Content-type"
+CONTENT="text/html; charset=UTF-8"></HEAD
+><BODY
+CLASS="refentry"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>PHP Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="function.xcc-new-module-invoke.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="function.xcc-new-session.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="function.xcc-new-module-spawn"
+></A
+>xcc_new_module_spawn</H1
+><DIV
+CLASS="refnamediv"
+><A
+NAME="AEN188012"
+></A
+><P
+>    (no version information, might be only in CVS)</P
+>xcc_new_module_spawn&nbsp;--&nbsp;Creates a new resource for spawning a module</DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN188015"
+></A
+><H2
+>Description</H2
+>resource <B
+CLASS="methodname"
+>xcc_new_module_spawn</B
+> ( string uri [, resource link] )<BR
+></BR
+><P
+>&#13;   Sets up a module to be spawned.  The uri should be set to the uri
+   where the module can be found in the database.  External variables
+   can be set on the returned request variable.  The spawned module is placed
+   into the processing queue for execution.
+  </P
+></DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN188027"
+></A
+><H2
+>Parameters</H2
+><P
+>&#13;   <P
+></P
+><DIV
+CLASS="variablelist"
+><DL
+><DT
+><VAR
+CLASS="parameter"
+>uri</VAR
+></DT
+><DD
+><P
+>&#13;       The uri should be set to the uri where the module can be found in the
+       database. Spawned modules must live in the database, not the
+       filesystem.
+      </P
+></DD
+><DT
+><VAR
+CLASS="parameter"
+>&#13;link</VAR
+></DT
+><DD
+><P
+>The connection to the Mark Logic server.
+If the link identifier is not specified, the last link opened by
+<B
+CLASS="function"
+>xcc_connect()</B
+> is assumed. If no such link is found, an
+<TT
+CLASS="constant"
+><B
+>E_WARNING</B
+></TT
+> level warning is generated.</P
+></DD
+></DL
+></DIV
+>
+  </P
+></DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN188043"
+></A
+><H2
+>Return Values</H2
+><P
+>&#13;   Returns a request resource that can be passed into
+   <B
+CLASS="function"
+>xcc_submit_request()()</B
+>
+  </P
+></DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN188047"
+></A
+><H2
+>Examples</H2
+><P
+>&#13;   <TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="example"
+><A
+NAME="AEN188050"
+></A
+><P
+><B
+>Example 1. <B
+CLASS="function"
+>xcc_new_module_spawn()</B
+> example</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+CELLPADDING="5"
+><TR
+><TD
+><code><font color="#000000">
+<font color="#0000BB">&lt;?php<br />xcc_new_session</font><font color="#007700">(</font><font color="#0000BB">$user</font><font color="#007700">,&nbsp;</font><font color="#0000BB">$password</font><font color="#007700">,&nbsp;</font><font color="#0000BB">$host</font><font color="#007700">,&nbsp;</font><font color="#0000BB">$database</font><font color="#007700">,&nbsp;</font><font color="#0000BB">$port</font><font color="#007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;die(</font><font color="#DD0000">"Counld&nbsp;not&nbsp;connect&nbsp;to&nbsp;server:&nbsp;"&nbsp;</font><font color="#007700">.&nbsp;</font><font color="#0000BB">xcc_error</font><font color="#007700">());<br /><br /></font><font color="#0000BB">$stmt&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000BB">xcc_new_module_spawn</font><font color="#007700">(</font><font color="#DD0000">'http://example.com/sample.xqy'</font><font color="#007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;die(</font><font color="#DD0000">"Can't&nbsp;spawn&nbsp;module:&nbsp;"&nbsp;</font><font color="#007700">.&nbsp;</font><font color="#0000BB">xcc_error</font><font color="#007700">());<br /><br /></font><font color="#0000BB">xcc_submit_query</font><font color="#007700">(</font><font color="#0000BB">$stmt</font><font color="#007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;die(</font><font color="#DD0000">"Can't&nbsp;execute&nbsp;query:&nbsp;"&nbsp;</font><font color="#007700">.&nbsp;</font><font color="#0000BB">xcc_error</font><font color="#007700">());<br /></font><font color="#0000BB">?&gt;</font>
+</font>
+</code></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+>
+  </P
+></DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN188054"
+></A
+><H2
+>See Also</H2
+><P
+>&#13;   <P
+></P
+><TABLE
+BORDER="0"
+><TBODY
+><TR
+><TD
+><A
+HREF="function.xcc-set-variable.html"
+><B
+CLASS="function"
+>xcc_set_variable()</B
+></A
+></TD
+></TR
+><TR
+><TD
+><A
+HREF="function.xcc-submit-request.html"
+><B
+CLASS="function"
+>xcc_submit_request()</B
+></A
+></TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+>
+  </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="function.xcc-new-module-invoke.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="function.xcc-new-session.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>xcc_new_module_invoke</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ref.xcc.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>xcc_new_session</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

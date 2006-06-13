@@ -1,0 +1,751 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>XCC Functions</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="PHP Manual"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Function Reference"
+HREF="funcref.html"><LINK
+REL="PREVIOUS"
+TITLE="xattr_supported"
+HREF="function.xattr-supported.html"><LINK
+REL="NEXT"
+TITLE="xcc_add_permission"
+HREF="function.xcc-add-permission.html"><META
+HTTP-EQUIV="Content-type"
+CONTENT="text/html; charset=UTF-8"></HEAD
+><BODY
+CLASS="reference"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>PHP Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="function.xattr-supported.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="function.xcc-add-permission.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="reference"
+><A
+NAME="ref.xcc"
+></A
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="title"
+>CLX. XCC Functions</H1
+><DIV
+CLASS="PARTINTRO"
+><A
+NAME="AEN187136"
+></A
+><DIV
+CLASS="section"
+><H1
+CLASS="section"
+><A
+NAME="xcc.intro"
+>Introduction</A
+></H1
+><P
+>These functions give you the ability to connect, issue queries and
+     insert documents into a Mark Logic XML database.  For more information
+     about the Mark Logic database visit <A
+HREF="http://www.marklogic.com"
+TARGET="_top"
+>http://www.marklogic.com</A
+>.
+    </P
+></DIV
+><DIV
+CLASS="section"
+><H1
+CLASS="section"
+><A
+NAME="xcc.requirements"
+>Requirements</A
+></H1
+><P
+>&#13;     In order to have these functions available, you must compile PHP with
+     XCC support.
+    </P
+></DIV
+><DIV
+CLASS="section"
+><H1
+CLASS="section"
+><A
+NAME="xcc.installation"
+>Installation</A
+></H1
+><DIV
+CLASS="section"
+><H2
+CLASS="section"
+><A
+NAME="AEN187146"
+>Installation on Linux Systems</A
+></H2
+><P
+>&#13;   For compiling, simply use the 
+   <VAR
+CLASS="option"
+>--with-xcc[=DIR]</VAR
+>
+   configuration option where the optional <VAR
+CLASS="literal"
+>[DIR]</VAR
+> points to 
+   the XCC installation directory.
+  </P
+><P
+>&#13;   This extension has been compiled aginst PHP 4.  It should be compatible
+   with PHP 5 but has not been tried.  With that in mind, this extension has
+   not been heavily tested.
+  </P
+></DIV
+><DIV
+CLASS="section"
+><H2
+CLASS="section"
+><A
+NAME="AEN187152"
+>Installation on Windows Systems</A
+></H2
+><P
+>&#13;   The underlying library has not been tested under Windows nor compiled
+   under Windows.
+  </P
+></DIV
+></DIV
+><DIV
+CLASS="section"
+><H1
+CLASS="section"
+><A
+NAME="xcc.resources"
+>Resource Types</A
+></H1
+><P
+>&#13;     The XCC module has three different resource types.  The first resource
+     is used to hold the connection to the database.  The second resource is
+     for building, executing and fetching results from queries.  The third
+     resource is used for inserting documents into the database.
+    </P
+></DIV
+><DIV
+CLASS="section"
+><H1
+CLASS="section"
+><A
+NAME="xcc.constants"
+>Predefined Constants</A
+></H1
+><P
+>&#13;The constants below are defined by this extension, and
+will only be available when the extension has either
+been compiled into PHP or dynamically loaded at runtime.
+</P
+><P
+>&#13;  There are a number of constants that are avaliable to user of this extension.
+  The constants are grouped into three usages: formatting, permissions and
+  schema types.
+ </P
+><P
+>&#13;  The following constants are defined for setting the format of a document
+  being inserted.  These can all be passed in as the second argument to
+  <B
+CLASS="function"
+>xcc_document_format()</B
+>.
+ </P
+><DIV
+CLASS="table"
+><A
+NAME="xcc.formatting-flags"
+></A
+><P
+><B
+>Table 1. XCC formatting constants</B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><THEAD
+><TR
+><TH
+>Constant</TH
+><TH
+>Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>XCC_CONTENT_FORMAT_XML</TD
+><TD
+>The document being loaded should be treated as XML.</TD
+></TR
+><TR
+><TD
+>XCC_CONTENT_FORMAT_TEXT</TD
+><TD
+>The document being loaded should be treated as text.</TD
+></TR
+><TR
+><TD
+>XCC_CONTENT_FORMAT_BINARY</TD
+><TD
+>The document being loaded should be treated as binary data.</TD
+></TR
+><TR
+><TD
+>XCC_CONTENT_FORMAT_NONE</TD
+><TD
+>This setting allows the server to decide what the type is itself.</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><P
+>&#13;  The following constents are used when granting a role in the database a
+  particular permission.  These are all passed in as the third argument to
+  <A
+HREF="function.xcc-add-permission.html"
+><B
+CLASS="function"
+>xcc_add_permission()</B
+></A
+>.
+ </P
+><DIV
+CLASS="table"
+><A
+NAME="xcc.permission-flags"
+></A
+><P
+><B
+>Table 2. XCC permission constants</B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><THEAD
+><TR
+><TH
+>Constant</TH
+><TH
+>Description</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>XCC_PERMISSION_READ</TD
+><TD
+>Sets the read permission on the document being loaded.</TD
+></TR
+><TR
+><TD
+>XCC_PERMISSION_INSERT</TD
+><TD
+>Sets the insert permission on the document being loaded.</TD
+></TR
+><TR
+><TD
+>XCC_PERMISSION_UPDATE</TD
+><TD
+>Sets the update permission on the document being loaded.</TD
+></TR
+><TR
+><TD
+>XCC_PERMISSION_EXECUTE</TD
+><TD
+>Sets the execute permission on the document being loaded.</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><P
+>&#13;  The schema type constants are used when setting a bind variable on a query.
+  These constants can all be passed in as the third argument to
+  <A
+HREF="function.xcc-set-variable.html"
+><B
+CLASS="function"
+>xcc_set_variable()</B
+></A
+>.
+ </P
+><DIV
+CLASS="table"
+><A
+NAME="xcc.schema-flags"
+></A
+><P
+><B
+>Table 3. XCC schema type constants</B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><THEAD
+><TR
+><TH
+>Constant</TH
+><TH
+>Schema Type Set</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>XCC_TYPE_ANYURI</TD
+><TD
+>xs:anyURI</TD
+></TR
+><TR
+><TD
+>XCC_TYPE_BASE64BINARY</TD
+><TD
+>xs:base64Binary</TD
+></TR
+><TR
+><TD
+>XCC_TYPE_BINARY</TD
+><TD
+>xs:binary</TD
+></TR
+><TR
+><TD
+>XCC_TYPE_BOOLEAN</TD
+><TD
+>xs:boolean</TD
+></TR
+><TR
+><TD
+>XCC_TYPE_DATE</TD
+><TD
+>xs:date</TD
+></TR
+><TR
+><TD
+>XCC_TYPE_DATETIME</TD
+><TD
+>xs:dateTime</TD
+></TR
+><TR
+><TD
+>XCC_TYPE_DAYTIMEDURATION</TD
+><TD
+>xs:dayTimeDuration</TD
+></TR
+><TR
+><TD
+>XCC_TYPE_DECIMAL</TD
+><TD
+>xs:decimal</TD
+></TR
+><TR
+><TD
+>XCC_TYPE_DOUBLE</TD
+><TD
+>xs:double</TD
+></TR
+><TR
+><TD
+>XCC_TYPE_DURATION</TD
+><TD
+>xs:duration</TD
+></TR
+><TR
+><TD
+>XCC_TYPE_FLOAT</TD
+><TD
+>xs:float</TD
+></TR
+><TR
+><TD
+>XCC_TYPE_GDAY</TD
+><TD
+>xs:gDay</TD
+></TR
+><TR
+><TD
+>XCC_TYPE_GMONTH</TD
+><TD
+>xs:gMonth</TD
+></TR
+><TR
+><TD
+>XCC_TYPE_GMONTHDAY</TD
+><TD
+>xs:gMonthDay</TD
+></TR
+><TR
+><TD
+>XCC_TYPE_GYEAR</TD
+><TD
+>xs:gYear</TD
+></TR
+><TR
+><TD
+>XCC_TYPE_GYEARMONTH</TD
+><TD
+>xs:gYearMonth</TD
+></TR
+><TR
+><TD
+>XCC_TYPE_HEXBINARY</TD
+><TD
+>xs:hexBinary</TD
+></TR
+><TR
+><TD
+>XCC_TYPE_INTEGER</TD
+><TD
+>xs:integer</TD
+></TR
+><TR
+><TD
+>XCC_TYPE_NODE</TD
+><TD
+>node()</TD
+></TR
+><TR
+><TD
+>XCC_TYPE_QNAME</TD
+><TD
+>xs:QName</TD
+></TR
+><TR
+><TD
+>XCC_TYPE_STRING</TD
+><TD
+>xs:string</TD
+></TR
+><TR
+><TD
+>XCC_TYPE_TEXT</TD
+><TD
+>text()</TD
+></TR
+><TR
+><TD
+>XCC_TYPE_TIME</TD
+><TD
+>xs:time</TD
+></TR
+><TR
+><TD
+>XCC_TYPE_YEARMONTHDURATION</TD
+><TD
+>xs:yearMonthDuration</TD
+></TR
+><TR
+><TD
+>XCC_TYPE_UNKNOWN</TD
+><TD
+>N/A</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="section"
+><H1
+CLASS="section"
+><A
+NAME="xcc.notes"
+>Notes</A
+></H1
+><DIV
+CLASS="note"
+><BLOCKQUOTE
+CLASS="note"
+><P
+><B
+>Note: </B
+>
+      Most of the XCC functions have a <VAR
+CLASS="parameter"
+>link</VAR
+> as the
+      last parameter. This parameter is optional and if not provided the
+      last opened connection is used.  This behavior should be familiar to
+      users of the mysql functions.
+     </P
+></BLOCKQUOTE
+></DIV
+></DIV
+><DIV
+CLASS="section"
+><H1
+CLASS="section"
+><A
+NAME="xcc.examples"
+>Examples</A
+></H1
+><P
+>&#13;     This basic example shows how to connect, execute a query, print
+     the resulting items and disconnect from a Mark Logic XCC database.
+     <TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="example"
+><A
+NAME="AEN187299"
+></A
+><P
+><B
+>Example 1. Basic XCC extension example</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+CELLPADDING="5"
+><TR
+><TD
+><code><font color="#000000">
+<font color="#0000BB">&lt;?php<br /></font><font color="#FF8000">//&nbsp;Connect&nbsp;to&nbsp;the&nbsp;database<br /></font><font color="#0000BB">xcc_connect</font><font color="#007700">(</font><font color="#0000BB">$user</font><font color="#007700">,&nbsp;</font><font color="#0000BB">$password</font><font color="#007700">,&nbsp;</font><font color="#0000BB">$host</font><font color="#007700">,&nbsp;</font><font color="#0000BB">$port</font><font color="#007700">)&nbsp;or&nbsp;die(</font><font color="#DD0000">"Counld&nbsp;not&nbsp;connect&nbsp;to&nbsp;server:&nbsp;"&nbsp;</font><font color="#007700">.&nbsp;</font><font color="#0000BB">xcc_error</font><font color="#007700">());<br /><br /></font><font color="#FF8000">//&nbsp;Find&nbsp;all&nbsp;of&nbsp;the&nbsp;titles&nbsp;in&nbsp;articles&nbsp;and&nbsp;get&nbsp;them&nbsp;out&nbsp;as&nbsp;strings<br /></font><font color="#0000BB">$results&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000BB">xcc_submit_query</font><font color="#007700">(</font><font color="#DD0000">'for&nbsp;$i&nbsp;in&nbsp;/article//title&nbsp;return&nbsp;string($i)'</font><font color="#007700">)&nbsp;or&nbsp;die(</font><font color="#DD0000">"Can't&nbsp;execute&nbsp;query:&nbsp;"&nbsp;</font><font color="#007700">.&nbsp;</font><font color="#0000BB">xcc_error</font><font color="#007700">());<br /><br /></font><font color="#FF8000">//&nbsp;Itterate&nbsp;over&nbsp;the&nbsp;the&nbsp;items&nbsp;and&nbsp;print&nbsp;out&nbsp;the&nbsp;'data'&nbsp;from&nbsp;each<br /></font><font color="#007700">while(</font><font color="#0000BB">$item&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000BB">xcc_fetch_next</font><font color="#007700">(</font><font color="#0000BB">$results</font><font color="#007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</font><font color="#0000BB">$item</font><font color="#007700">[</font><font color="#DD0000">'data'</font><font color="#007700">],&nbsp;</font><font color="#DD0000">"&lt;br/&gt;"</font><font color="#007700">;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#FF8000">//&nbsp;you&nbsp;can&nbsp;get&nbsp;the&nbsp;XML&nbsp;Schema&nbsp;type&nbsp;out&nbsp;with&nbsp;the&nbsp;'type'&nbsp;key<br /></font><font color="#007700">}<br /><br /></font><font color="#FF8000">//&nbsp;Close&nbsp;the&nbsp;connection<br /></font><font color="#0000BB">xcc_close</font><font color="#007700">();<br /></font><font color="#0000BB">?&gt;</font>
+</font>
+</code></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+>
+    </P
+></DIV
+></DIV
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="function.xcc-add-permission.html"
+>xcc_add_permission</A
+>&nbsp;--&nbsp;Add a permission to a document being inserted</DT
+><DT
+><A
+HREF="function.xcc-close.html"
+>xcc_close</A
+>&nbsp;--&nbsp;Closes the connection to a Mark Logic Server</DT
+><DT
+><A
+HREF="function.xcc-content-collections.html"
+>xcc_content_collections</A
+>&nbsp;--&nbsp;Sets the collections that the document belongs to</DT
+><DT
+><A
+HREF="function.xcc-content-format.html"
+>xcc_content_format</A
+>&nbsp;--&nbsp;Sets the format of the document being inserted</DT
+><DT
+><A
+HREF="function.xcc-content-from-file.html"
+>xcc_content_from_file</A
+>&nbsp;--&nbsp;Inserts a new document into the database from a file</DT
+><DT
+><A
+HREF="function.xcc-content-from-string.html"
+>xcc_content_from_string</A
+>&nbsp;--&nbsp;Inserts a new document into the database from a string</DT
+><DT
+><A
+HREF="function.xcc-content-namespace.html"
+>xcc_content_namespace</A
+>&nbsp;--&nbsp;Sets the namespace of the document being inserted</DT
+><DT
+><A
+HREF="function.xcc-content-quality.html"
+>xcc_content_quality</A
+>&nbsp;--&nbsp;Sets the quality of the document being inserted</DT
+><DT
+><A
+HREF="function.xcc-content-repair.html"
+>xcc_content_repair</A
+>&nbsp;--&nbsp;Attempt to repair the XML file being inserted if needed</DT
+><DT
+><A
+HREF="function.xcc-error.html"
+>xcc_error</A
+>&nbsp;--&nbsp;Returns the error from the previously failed operation</DT
+><DT
+><A
+HREF="function.xcc-fetch-next.html"
+>xcc_fetch_next</A
+>&nbsp;--&nbsp;Fetches the next item in a result sequence</DT
+><DT
+><A
+HREF="function.xcc-insert-content.html"
+>xcc_insert_content</A
+>&nbsp;--&nbsp;Execute loading a document into the database.</DT
+><DT
+><A
+HREF="function.xcc-new-adhoc-query.html"
+>xcc_new_adhoc_query</A
+>&nbsp;--&nbsp;Creates a new query statement</DT
+><DT
+><A
+HREF="function.xcc-new-module-invoke.html"
+>xcc_new_module_invoke</A
+>&nbsp;--&nbsp;Creates a new resource for invoking a module</DT
+><DT
+><A
+HREF="function.xcc-new-module-spawn.html"
+>xcc_new_module_spawn</A
+>&nbsp;--&nbsp;Creates a new resource for spawning a module</DT
+><DT
+><A
+HREF="function.xcc-new-session.html"
+>xcc_new_session</A
+>&nbsp;--&nbsp;Creates a new session with a Mark Logic Server</DT
+><DT
+><A
+HREF="function.xcc-server-info.html"
+>xcc_server_info</A
+>&nbsp;--&nbsp;Gets information about the server that you are connected to</DT
+><DT
+><A
+HREF="function.xcc-set-variable.html"
+>xcc_set_variable</A
+>&nbsp;--&nbsp;Sets a bind variable for a created query</DT
+><DT
+><A
+HREF="function.xcc-submit-query.html"
+>xcc_submit_query</A
+>&nbsp;--&nbsp;Executes a query</DT
+><DT
+><A
+HREF="function.xcc-submit-request.html"
+>xcc_submit_request</A
+>&nbsp;--&nbsp;Executes a created query</DT
+></DL
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="function.xattr-supported.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="function.xcc-add-permission.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>xattr_supported</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="funcref.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>xcc_add_permission</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

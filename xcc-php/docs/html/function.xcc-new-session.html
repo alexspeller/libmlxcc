@@ -1,0 +1,388 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>xcc_new_session</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="PHP Manual"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="XCC Functions"
+HREF="ref.xcc.html"><LINK
+REL="PREVIOUS"
+TITLE="xcc_new_module_spawn"
+HREF="function.xcc-new-module-spawn.html"><LINK
+REL="NEXT"
+TITLE="xcc_server_info"
+HREF="function.xcc-server-info.html"><META
+HTTP-EQUIV="Content-type"
+CONTENT="text/html; charset=UTF-8"></HEAD
+><BODY
+CLASS="refentry"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>PHP Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="function.xcc-new-module-spawn.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="function.xcc-server-info.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="function.xcc-new-session"
+></A
+>xcc_new_session</H1
+><DIV
+CLASS="refnamediv"
+><A
+NAME="AEN188063"
+></A
+><P
+>    (no version information, might be only in CVS)</P
+>xcc_new_session&nbsp;--&nbsp;Creates a new session with a Mark Logic Server</DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN188066"
+></A
+><H2
+>Description</H2
+>resource <B
+CLASS="methodname"
+>xcc_new_session</B
+> ( string username, string password, string host, string database, int port )<BR
+></BR
+><P
+>&#13;   Creates a new session with a Mark Logic XML Database Server.
+  </P
+></DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN188087"
+></A
+><H2
+>Parameters</H2
+><P
+>&#13;   <P
+></P
+><DIV
+CLASS="variablelist"
+><DL
+><DT
+><VAR
+CLASS="parameter"
+>username</VAR
+></DT
+><DD
+><P
+>&#13;       The username that should be used to connect to the server.
+      </P
+></DD
+><DT
+><VAR
+CLASS="parameter"
+>password</VAR
+></DT
+><DD
+><P
+>&#13;       The password for the specified user.
+      </P
+></DD
+><DT
+><VAR
+CLASS="parameter"
+>host</VAR
+></DT
+><DD
+><P
+>&#13;       The host that Mark Logic is running on.
+      </P
+></DD
+><DT
+><VAR
+CLASS="parameter"
+>database</VAR
+></DT
+><DD
+><P
+>&#13;       The database to issue queries agains.
+      </P
+></DD
+><DT
+><VAR
+CLASS="parameter"
+>port</VAR
+></DT
+><DD
+><P
+>&#13;       The port to connect to.
+      </P
+></DD
+></DL
+></DIV
+>
+  </P
+></DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN188116"
+></A
+><H2
+>Return Values</H2
+><P
+>&#13;   Returns a Mark Logic link identifier on success, or <TT
+CLASS="constant"
+><B
+>FALSE</B
+></TT
+> on failure.
+  </P
+></DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN188120"
+></A
+><H2
+>Examples</H2
+><P
+>&#13;   <TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="example"
+><A
+NAME="AEN188123"
+></A
+><P
+><B
+>Example 1. <B
+CLASS="function"
+>xcc_new_session()</B
+> example</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+CELLPADDING="5"
+><TR
+><TD
+><code><font color="#000000">
+<font color="#0000BB">&lt;?php<br />$link&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000BB">xcc_new_session</font><font color="#007700">(</font><font color="#DD0000">'xdbc_user'</font><font color="#007700">,&nbsp;</font><font color="#DD0000">'xdbc_password'</font><font color="#007700">,&nbsp;</font><font color="#DD0000">'localhost'</font><font color="#007700">,&nbsp;</font><font color="#DD0000">'Documents'</font><font color="#007700">,&nbsp;</font><font color="#0000BB">8002</font><font color="#007700">);<br />if&nbsp;(!</font><font color="#0000BB">$link</font><font color="#007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</font><font color="#DD0000">'Could&nbsp;not&nbsp;connect&nbsp;to&nbsp;server:&nbsp;'&nbsp;</font><font color="#007700">.&nbsp;</font><font color="#0000BB">xcc_error</font><font color="#007700">());<br />}<br />echo&nbsp;</font><font color="#DD0000">"Connected&nbsp;successfully&nbsp;to:&nbsp;"</font><font color="#007700">,&nbsp;</font><font color="#0000BB">xcc_server_info</font><font color="#007700">(</font><font color="#0000BB">$link</font><font color="#007700">);<br /></font><font color="#0000BB">xcc_close</font><font color="#007700">(</font><font color="#0000BB">$link</font><font color="#007700">);<br /></font><font color="#0000BB">?&gt;</font>
+</font>
+</code></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+>
+  </P
+><P
+>&#13;   <TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="example"
+><A
+NAME="AEN188128"
+></A
+><P
+><B
+>Example 2. <B
+CLASS="function"
+>xcc_new_session()</B
+> example using the default link behavior</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+CELLPADDING="5"
+><TR
+><TD
+><code><font color="#000000">
+<font color="#0000BB">&lt;?php<br />xcc_new_session</font><font color="#007700">(</font><font color="#DD0000">'xdbc_user'</font><font color="#007700">,&nbsp;</font><font color="#DD0000">'xdbc_password'</font><font color="#007700">,&nbsp;</font><font color="#DD0000">'localhost'</font><font color="#007700">,&nbsp;</font><font color="#0000BB">Documents</font><font color="#DD0000">',&nbsp;8002)<br />&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;die('</font><font color="#0000BB">Could&nbsp;not&nbsp;connect&nbsp;to&nbsp;server</font><font color="#007700">:&nbsp;'</font><font color="#0000BB">&nbsp;.&nbsp;xcc_error());<br /><br />echo&nbsp;"Connected&nbsp;successfully&nbsp;to:&nbsp;",&nbsp;xcc_server_info();<br />xcc_close();<br />?&gt;</font>
+</font>
+</code></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+>
+  </P
+></DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN188132"
+></A
+><H2
+>Notes</H2
+><DIV
+CLASS="note"
+><BLOCKQUOTE
+CLASS="note"
+><P
+><B
+>Note: </B
+>
+    This library is designed to connect to the 3.0 or newer version of the
+    Mark Logic server.  You may have some success connecting to the 2.2
+    version of the server but don't be surprised if things break.
+   </P
+></BLOCKQUOTE
+></DIV
+></DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN188136"
+></A
+><H2
+>See Also</H2
+><P
+>&#13;   <P
+></P
+><TABLE
+BORDER="0"
+><TBODY
+><TR
+><TD
+><A
+HREF="function.xcc-close.html"
+><B
+CLASS="function"
+>xcc_close()</B
+></A
+></TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+>
+  </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="function.xcc-new-module-spawn.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="function.xcc-server-info.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>xcc_new_module_spawn</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ref.xcc.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>xcc_server_info</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

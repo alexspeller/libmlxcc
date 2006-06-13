@@ -1,0 +1,310 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>xcc_close</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="PHP Manual"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="XCC Functions"
+HREF="ref.xcc.html"><LINK
+REL="PREVIOUS"
+TITLE="xcc_add_permission"
+HREF="function.xcc-add-permission.html"><LINK
+REL="NEXT"
+TITLE="xcc_content_collections"
+HREF="function.xcc-content-collections.html"><META
+HTTP-EQUIV="Content-type"
+CONTENT="text/html; charset=UTF-8"></HEAD
+><BODY
+CLASS="refentry"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>PHP Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="function.xcc-add-permission.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="function.xcc-content-collections.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="function.xcc-close"
+></A
+>xcc_close</H1
+><DIV
+CLASS="refnamediv"
+><A
+NAME="AEN187364"
+></A
+><P
+>    (no version information, might be only in CVS)</P
+>xcc_close&nbsp;--&nbsp;Closes the connection to a Mark Logic Server</DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN187367"
+></A
+><H2
+>Description</H2
+>bool <B
+CLASS="methodname"
+>xcc_close</B
+> ( [resource link] )<BR
+></BR
+><P
+>&#13;   <B
+CLASS="function"
+>xcc_close()</B
+> closes the connection to the Mark Logic server
+   that's associated with the specified link. If <VAR
+CLASS="parameter"
+>link</VAR
+>
+   isn't specified, the last opened link is used.
+  </P
+></DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN187378"
+></A
+><H2
+>Parameters</H2
+><P
+>&#13;   <P
+></P
+><DIV
+CLASS="variablelist"
+><DL
+><DT
+><VAR
+CLASS="parameter"
+>&#13;link</VAR
+></DT
+><DD
+><P
+>The connection to the Mark Logic server.
+If the link identifier is not specified, the last link opened by
+<B
+CLASS="function"
+>xcc_connect()</B
+> is assumed. If no such link is found, an
+<TT
+CLASS="constant"
+><B
+>E_WARNING</B
+></TT
+> level warning is generated.</P
+></DD
+></DL
+></DIV
+>
+  </P
+></DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN187389"
+></A
+><H2
+>Return Values</H2
+><P
+>&#13;   Returns <TT
+CLASS="constant"
+><B
+>TRUE</B
+></TT
+> on success or <TT
+CLASS="constant"
+><B
+>FALSE</B
+></TT
+> on failure. 
+  </P
+></DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN187394"
+></A
+><H2
+>Examples</H2
+><P
+>&#13;   <TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+CLASS="EXAMPLE"
+><TR
+><TD
+><DIV
+CLASS="example"
+><A
+NAME="AEN187397"
+></A
+><P
+><B
+>Example 1. <B
+CLASS="function"
+>xcc_close()</B
+> example</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+CELLPADDING="5"
+><TR
+><TD
+><code><font color="#000000">
+<font color="#0000BB">&lt;?php<br />$link&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000BB">xcc_new_session</font><font color="#007700">(</font><font color="#DD0000">'xdbc_user'</font><font color="#007700">,&nbsp;</font><font color="#DD0000">'xdbc_password'</font><font color="#007700">,&nbsp;</font><font color="#DD0000">'localhost'</font><font color="#007700">,&nbsp;</font><font color="#DD0000">'Documents'</font><font color="#007700">,&nbsp;</font><font color="#0000BB">8002</font><font color="#007700">);<br />if&nbsp;(!</font><font color="#0000BB">$link</font><font color="#007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</font><font color="#DD0000">'Could&nbsp;not&nbsp;connect&nbsp;to&nbsp;server:&nbsp;'&nbsp;</font><font color="#007700">.&nbsp;</font><font color="#0000BB">xcc_error</font><font color="#007700">());<br />}<br />echo&nbsp;</font><font color="#DD0000">"Connected&nbsp;successfully&nbsp;to:&nbsp;"</font><font color="#007700">,&nbsp;</font><font color="#0000BB">xcc_server_info</font><font color="#007700">(</font><font color="#0000BB">$link</font><font color="#007700">);<br /></font><font color="#0000BB">xcc_close</font><font color="#007700">(</font><font color="#0000BB">$link</font><font color="#007700">);<br /></font><font color="#0000BB">?&gt;</font>
+</font>
+</code></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+>
+  </P
+></DIV
+><DIV
+CLASS="refsect1"
+><A
+NAME="AEN187401"
+></A
+><H2
+>See Also</H2
+><P
+>&#13;   <P
+></P
+><TABLE
+BORDER="0"
+><TBODY
+><TR
+><TD
+><A
+HREF="function.xcc-new-session.html"
+><B
+CLASS="function"
+>xcc_new_session()</B
+></A
+></TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+>
+  </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="function.xcc-add-permission.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="function.xcc-content-collections.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>xcc_add_permission</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ref.xcc.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>xcc_content_collections</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
