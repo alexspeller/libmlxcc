@@ -961,7 +961,7 @@ PHP_FUNCTION(xcc_insert_content)
 	zval *content_ref;
 	int content_id = -1;
 	php_xcc_content *content;
-	long bytes_inserted;
+	xcc_off_t bytes_inserted;
 
 	if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "r", &content_ref) == FAILURE) {
 		return;
@@ -979,7 +979,13 @@ PHP_FUNCTION(xcc_insert_content)
 	/* force remove of resource */
 	zend_list_delete(content_id);
 
-	RETURN_LONG_LONG(bytes_inserted);
+	if (bytes_inserted < LONG_MAX) {
+		RETURN_LONG((long) bytes_inserted);
+	} else {
+		char *ret;
+		int l = spprintf(&ret, 0, XCC_FORMAT_OFF_T, bytes_inserted);
+		RETURN_STRINGL(ret, l, 0);
+	}
 }
 /* }}} */
 
